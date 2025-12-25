@@ -71,23 +71,33 @@
 
         /* --- MAIN THALI SHOWCASE --- */
         .thali-showcase {
-            background: #fff;
+            background: url('https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg?auto=compress&cs=tinysrgb&w=1260') center/cover;
             padding: 60px 20px;
             border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             text-align: center;
             margin: 0 20px 60px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 3px solid rgba(212, 175, 55, 0.5);
+            position: relative;
         }
 
-        .thali-showcase h2 { margin-bottom: 10px; font-size: 2rem; }
-        .thali-showcase > p { color: #777; margin-bottom: 30px; }
+        .thali-showcase h2 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+        .thali-showcase > p {
+            color: #f0f0f0;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        }
 
         .main-thali-image {
             max-width: 100%;
             width: 500px;
-            border-radius: 50%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
             transition: transform 0.5s ease;
         }
 
@@ -225,6 +235,9 @@
             display: block;
             margin: 0 auto 20px;
             border-radius: 8px;
+            background: #fff;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .data-block { margin-bottom: 20px; }

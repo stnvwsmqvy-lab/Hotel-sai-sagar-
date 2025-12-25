@@ -139,13 +139,13 @@
         .food-item:hover { transform: scale(1.1); z-index: 5; }
         .food-item:hover::after { opacity: 1; }
 
-        /* Positioning */
-        .item-tambda { top: 10%; left: 10%; }
-        .item-pandhara { top: 10%; right: 10%; }
-        .item-mutton { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 180px; height: 180px; z-index: 2; }
-        .item-dahi { bottom: 15%; left: 15%; }
-        .item-anda { bottom: 15%; right: 15%; }
-        .item-chapati { top: 50%; right: -5%; transform: translateY(-50%); border-radius: 50%; }
+        /* Positioning - arranged like a real thali plate */
+        .item-chapati { top: 2%; left: 50%; transform: translateX(-50%); } /* Puri/Bhakri at top */
+        .item-mutton { top: 35%; left: 50%; transform: translate(-50%, -50%); width: 160px; height: 160px; z-index: 2; } /* Mutton Fry center */
+        .item-pandhara { top: 25%; left: 8%; } /* White curry - left side */
+        .item-dahi { top: 25%; right: 8%; } /* Dahi Kanda - right side */
+        .item-tambda { bottom: 8%; left: 22%; } /* Red curry - bottom left */
+        .item-anda { bottom: 8%; right: 22%; } /* Egg curry - bottom right */
 
         /* Active Animations */
         .thali-container.active-item .food-item {
@@ -165,10 +165,10 @@
 
         /* Reset transforms for center/side items when active */
         .thali-container.active-item .food-item.item-mutton.active {
-            transform: translate(-50%, -50%) scale(2.0) translateY(-60px);
+            transform: translate(-50%, -50%) scale(1.8) translateY(-40px);
         }
         .thali-container.active-item .food-item.item-chapati.active {
-            transform: translateY(-50%) scale(1.8) translateY(-50px);
+            transform: translateX(-50%) scale(1.8) translateY(20px);
         }
 
         /* --- Detailed Modal --- */

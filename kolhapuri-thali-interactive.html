@@ -15,8 +15,8 @@
 
     <style>
         :root {
-            --primary: #8B0000; /* Kolhapuri Red */
-            --gold: #D4AF37; /* Royal Gold */
+            --primary: #8B0000;
+            --gold: #D4AF37;
             --dark: #1a1a1a;
             --light: #f9f5eb;
             --white: #ffffff;
@@ -34,7 +34,7 @@
 
         h1, h2, h3 { font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- 1. HERO HEADER --- */
+        /* --- HERO HEADER --- */
         .hero-header {
             text-align: center;
             padding: 80px 20px 40px;
@@ -46,7 +46,6 @@
             font-size: 3rem;
             color: var(--primary);
             margin-bottom: 10px;
-            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
         }
 
         .hero-header .subtitle {
@@ -55,7 +54,7 @@
             font-style: italic;
         }
 
-        /* --- 2. HISTORY SECTION --- */
+        /* --- HISTORY SECTION --- */
         .history-box {
             max-width: 800px;
             margin: 60px auto;
@@ -70,7 +69,33 @@
         .history-box h2 { font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; }
         .history-box p { font-size: 1.1rem; color: #555; }
 
-        /* --- 3. INGREDIENTS GRID --- */
+        /* --- MAIN THALI SHOWCASE --- */
+        .thali-showcase {
+            background: #fff;
+            padding: 60px 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            margin: 0 20px 60px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .thali-showcase h2 { margin-bottom: 10px; font-size: 2rem; }
+        .thali-showcase > p { color: #777; margin-bottom: 30px; }
+
+        .main-thali-image {
+            max-width: 100%;
+            width: 500px;
+            border-radius: 50%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease;
+        }
+
+        .main-thali-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- INGREDIENTS GRID --- */
         .ingredients-section {
             max-width: 1100px;
             margin: 0 auto 60px;
@@ -97,11 +122,11 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border-left: 4px solid var(--gold);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        /* Staggered Animation Delays */
         .ingredient-card:nth-child(1) { animation-delay: 0.1s; }
         .ingredient-card:nth-child(2) { animation-delay: 0.2s; }
         .ingredient-card:nth-child(3) { animation-delay: 0.3s; }
@@ -137,107 +162,11 @@
             color: #666;
         }
 
-        /* --- 4. INTERACTIVE THALI --- */
-        .thali-showcase {
-            background: #fff;
-            padding: 60px 20px 100px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            text-align: center;
-            position: relative;
-            margin: 0 20px 80px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            overflow: hidden;
-        }
-
-        .thali-showcase h2 { margin-bottom: 10px; font-size: 2rem; }
-        .thali-showcase p { color: #777; margin-bottom: 50px; font-family: 'Lora', serif; }
-
-        .thali-container {
-            position: relative;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, #f8f8f8 0%, #dcdcdc 60%, #a9a9a9 100%);
-            border-radius: 50%;
-            margin: 0 auto;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.2), 0 20px 50px rgba(0,0,0,0.15);
-            transition: transform 0.5s ease;
-        }
-
-        /* Food Items */
-        .food-item {
-            position: absolute;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            border: 4px solid #fff;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .food-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .food-item::after {
-            content: attr(data-label);
-            position: absolute;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
-        /* THE HOVER ANIMATION */
-        .food-item:hover {
-            transform: scale(1.3) translateY(-40px);
-            z-index: 10;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-            border-color: var(--gold);
-        }
-        .food-item:hover::after { opacity: 1; }
-
-        /* Positioning - arranged like a real thali plate */
-        .item-chapati { top: 5%; left: 50%; transform: translateX(-50%); }
-        .item-mutton { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150px; height: 150px; z-index: 2; }
-        .item-pandhara { top: 35%; left: 5%; }
-        .item-dahi { top: 35%; right: 5%; }
-        .item-tambda { bottom: 12%; left: 18%; }
-        .item-anda { bottom: 12%; right: 18%; }
-
-        /* Active Animation (Click State) */
-        .thali-container.active-item .food-item {
-            opacity: 0.3;
-            transform: scale(0.8);
-            filter: grayscale(60%);
-        }
-        .thali-container.active-item .food-item.active {
-            opacity: 1;
-            transform: scale(1.8) translateY(-60px);
-            filter: grayscale(0%);
-            z-index: 100;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-            border-color: var(--gold);
-        }
-        .thali-container.active-item .food-item.item-mutton.active {
-            transform: translate(-50%, -50%) scale(2.1) translateY(-70px);
-        }
-        .thali-container.active-item .food-item.item-chapati.active {
-            transform: translateX(-50%) scale(1.8) translateY(20px);
+        .tap-hint {
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-top: 10px;
+            font-style: italic;
         }
 
         /* --- MODAL --- */
@@ -260,7 +189,7 @@
             width: 90%;
             max-width: 500px;
             background: #fff;
-            border-radius: 4px;
+            border-radius: 12px;
             z-index: 1001;
             opacity: 0;
             transition: all 0.4s ease;
@@ -276,19 +205,29 @@
         }
 
         .card-header {
-            padding: 25px 25px 10px;
+            padding: 20px 25px 15px;
             border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .card-header h2 { font-size: 1.6rem; color: var(--primary); margin: 0; }
+        .card-header h2 { font-size: 1.5rem; color: var(--primary); margin: 0; }
         .close-icon { cursor: pointer; font-size: 1.5rem; color: #999; transition: 0.3s; background: none; border: none; }
         .close-icon:hover { color: var(--primary); }
 
-        .card-body { padding: 25px; }
+        .card-body { padding: 0 25px 25px; }
 
-        .data-block { margin-bottom: 25px; }
+        /* Food Image in Modal */
+        .modal-food-image {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+            border-radius: 8px;
+        }
+
+        .data-block { margin-bottom: 20px; }
         .data-label {
             display: block;
             font-family: 'Cinzel', serif;
@@ -304,7 +243,7 @@
         .vital-stats {
             background: #f9f9f9;
             padding: 20px;
-            border-radius: 4px;
+            border-radius: 8px;
             display: flex;
             justify-content: space-around;
             text-align: center;
@@ -313,29 +252,25 @@
         .stat-box strong { display: block; font-size: 1.1rem; color: var(--primary); }
         .stat-box span { font-size: 0.75rem; color: #999; text-transform: uppercase; }
 
-        /* --- MOBILE OPTIMIZATION --- */
+        /* --- MOBILE --- */
         @media (max-width: 768px) {
             .hero-header h1 { font-size: 2.2rem; }
-            .thali-container { width: 320px; height: 320px; }
-            .food-item { width: 85px; height: 85px; }
-            .item-mutton { width: 110px; height: 110px; }
-            .food-item:hover {
-                transform: scale(1.1) translateY(-10px);
-            }
+            .main-thali-image { width: 90%; }
             .ingredient-card { padding: 20px; }
             .history-box { margin: 40px 20px; padding: 30px 20px; }
+            .modal-food-image { max-width: 200px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. HERO HEADER -->
+    <!-- HERO HEADER -->
     <header class="hero-header">
         <h1>Mutton Fry Thali</h1>
         <div class="subtitle">An Ode to the Maratha Legacy</div>
     </header>
 
-    <!-- 2. CULINARY HERITAGE (History) -->
+    <!-- CULINARY HERITAGE -->
     <section class="history-box">
         <h2>The Culinary Heritage</h2>
         <p>
@@ -345,77 +280,57 @@
         </p>
     </section>
 
-    <!-- 3. THE COMPLETE PLATE (Ingredients) -->
-    <section class="ingredients-section">
+    <!-- MAIN THALI IMAGE -->
+    <section class="thali-showcase">
         <h2>The Complete Plate</h2>
+        <p>A symphony of flavors arranged on a traditional steel thali</p>
+        <img src="Images/main-thali.png" alt="Kolhapuri Mutton Fry Thali" class="main-thali-image">
+    </section>
+
+    <!-- INGREDIENTS GRID -->
+    <section class="ingredients-section">
+        <h2>Explore Each Dish</h2>
         <div class="grid-container">
-            <div class="ingredient-card">
+            <div class="ingredient-card" data-id="tambda">
                 <i class="fa-solid fa-fire card-icon"></i>
                 <h3>Tambda Rassa</h3>
                 <p>The fiery red starter curry packed with heat and Byadgi chilies to wake the soul.</p>
+                <div class="tap-hint">Tap to explore →</div>
             </div>
-            <div class="ingredient-card">
+            <div class="ingredient-card" data-id="pandhara">
                 <i class="fa-solid fa-cloud card-icon"></i>
                 <h3>Pandhara Rassa</h3>
                 <p>White, coconut-based gravy to balance the spice with its soothing aroma.</p>
+                <div class="tap-hint">Tap to explore →</div>
             </div>
-            <div class="ingredient-card">
+            <div class="ingredient-card" data-id="mutton">
                 <i class="fa-solid fa-drumstick-bite card-icon"></i>
                 <h3>Mutton Fry</h3>
                 <p>Dry, spicy shallow-fried mutton. The hero of the plate with a crisp crust.</p>
+                <div class="tap-hint">Tap to explore →</div>
             </div>
-            <div class="ingredient-card">
+            <div class="ingredient-card" data-id="dahi">
                 <i class="fa-solid fa-bowl-food card-icon"></i>
                 <h3>Dahi Kanda</h3>
                 <p>Refreshing onion and yogurt salad essential for digestion after a heavy meal.</p>
+                <div class="tap-hint">Tap to explore →</div>
             </div>
-            <div class="ingredient-card">
+            <div class="ingredient-card" data-id="anda">
                 <i class="fa-solid fa-egg card-icon"></i>
                 <h3>Anda Curry</h3>
                 <p>Egg halves simmered in a rich masala gravy, adding savory depth.</p>
+                <div class="tap-hint">Tap to explore →</div>
             </div>
-            <div class="ingredient-card">
+            <div class="ingredient-card" data-id="chapati">
                 <i class="fa-solid fa-wheat-awn card-icon"></i>
                 <h3>Bhakri / Puri</h3>
                 <p>Traditional Maharashtrian bread - crispy puri or jowar bhakri to scoop up the flavors.</p>
+                <div class="tap-hint">Tap to explore →</div>
             </div>
         </div>
     </section>
 
-    <!-- 4. INTERACTIVE THALI -->
-    <section class="thali-showcase">
-        <h2>Explore the Plate</h2>
-        <p>Hover to see the magic • Click to read the secrets</p>
-
-        <div class="thali-container" id="thali">
-            <!-- Tambda Rassa - Red spicy curry -->
-            <div class="food-item item-tambda" data-id="tambda" data-label="Tambda Rassa" role="button" tabindex="0">
-                <img src="Images/tambda-rassa.png" alt="Tambda Rassa - Red Curry">
-            </div>
-            <!-- Pandhara Rassa - White coconut curry -->
-            <div class="food-item item-pandhara" data-id="pandhara" data-label="Pandhara Rassa" role="button" tabindex="0">
-                <img src="Images/pandhara-rassa.png" alt="Pandhara Rassa - White Curry">
-            </div>
-            <!-- Mutton Fry (Center) - Dry fried meat -->
-            <div class="food-item item-mutton" data-id="mutton" data-label="Mutton Fry" role="button" tabindex="0">
-                <img src="Images/mutton-fry.png" alt="Mutton Fry">
-            </div>
-            <!-- Dahi Kanda - Yogurt with onions -->
-            <div class="food-item item-dahi" data-id="dahi" data-label="Dahi Kanda" role="button" tabindex="0">
-                <img src="Images/dahi-kanda.png" alt="Dahi Kanda - Yogurt with Onions">
-            </div>
-            <!-- Anda Curry - Egg curry -->
-            <div class="food-item item-anda" data-id="anda" data-label="Anda Curry" role="button" tabindex="0">
-                <img src="Images/anda-curry.png" alt="Anda Curry - Egg Curry">
-            </div>
-            <!-- Bhakri/Puri - Indian bread -->
-            <div class="food-item item-chapati" data-id="chapati" data-label="Bhakri" role="button" tabindex="0">
-                <img src="Images/bhakri.png" alt="Bhakri - Indian Bread">
-            </div>
-        </div>
-    </section>
-
-    <!-- POPUP MODAL -->
+    <!-- MODAL -->
     <div class="modal-overlay" id="overlay"></div>
     <div class="detail-card" id="detailCard">
         <div class="card-header">
@@ -423,6 +338,9 @@
             <button class="close-icon" id="closeBtn"><i class="fa-solid fa-times"></i></button>
         </div>
         <div class="card-body">
+            <!-- Food Image -->
+            <img src="" alt="" id="mImage" class="modal-food-image">
+
             <div class="data-block">
                 <span class="data-label">The Masala Story</span>
                 <p id="mSoul" class="data-text">...</p>
@@ -452,40 +370,46 @@
     </div>
 
     <script>
-        // --- CREATIVE DATA SOURCE ---
+        // Data with image paths
         const vibeData = {
             tambda: {
                 title: "Tambda Rassa",
+                image: "Images/tambda-rassa.png",
                 soul: "A fiery symphony of dried red chilies (Byadgi), roasted coconut, and poppy seeds. It carries the smoky aroma of the 'Goda Masala', waking up the senses instantly.",
                 fuel: "Ignites the digestive fire (Agni). The heat from the chilies boosts circulation and metabolism, providing the raw energy required by the warriors of the past.",
                 stats: { cal: "210 kcal", pro: "12g", fat: "16g" }
             },
             pandhara: {
                 title: "Pandhara Rassa",
+                image: "Images/pandhara-rassa.png",
                 soul: "Soothing white pepper, cinnamon, and fresh coconut milk create a velvety texture. It smells of comfort, balancing the red heat with a gentle, aromatic embrace.",
                 fuel: "Cooling agent for the body. The coconut milk provides healthy fats, while the ginger and garlic paste act as natural anti-inflammatories to soothe the stomach.",
                 stats: { cal: "160 kcal", pro: "8g", fat: "12g" }
             },
             mutton: {
                 title: "Mutton Fry",
+                image: "Images/mutton-fry.png",
                 soul: "Dry roasted coriander, black pepper, and caramelized onions coat the tender mutton. The aroma is earthy, intense, and deeply rustic—the very soul of Kolhapur.",
                 fuel: "Strengthens muscle and bone. Rich in Heme Iron and Zinc, this dish builds the physical resilience of the eater, honoring the carnivorous diet of the Marathas.",
                 stats: { cal: "290 kcal", pro: "26g", fat: "20g" }
             },
             dahi: {
                 title: "Dahi Kanda",
+                image: "Images/dahi-kanda.png",
                 soul: "Fresh curd meets sharp red onions and roasted peanut powder. A crunchy, tangy, and refreshing burst that cuts through the richness of the meat.",
                 fuel: "Restores gut balance. The probiotics in the curd aid digestion, while the raw onions provide sulfur compounds that detoxify the body after a heavy meal.",
                 stats: { cal: "70 kcal", pro: "5g", fat: "3g" }
             },
             anda: {
                 title: "Anda Curry",
+                image: "Images/anda-curry.png",
                 soul: "Golden eggs simmered in a gravy rich with turmeric and kasuri methi. The scent is savory and grounding, adding a unique texture to the meat-heavy plate.",
                 fuel: "Brain food. Rich in Choline and Vitamin D, this dish supports mental clarity and memory, ensuring the mind remains as sharp as the sword.",
                 stats: { cal: "150 kcal", pro: "11g", fat: "11g" }
             },
             chapati: {
                 title: "Bhakri / Puri",
+                image: "Images/bhakri.png",
                 soul: "Jowar bhakri has an earthy, nutty aroma. Puri is deep-fried until golden and puffed. Both provide the canvas to carry the complex gravies from plate to palate.",
                 fuel: "Sustained stamina. Complex carbohydrates release energy slowly, ensuring the diner remains full and fueled for hours, essential for long days of work.",
                 stats: { cal: "150 kcal", pro: "3g", fat: "8g" }
@@ -493,15 +417,15 @@
         };
 
         // DOM Elements
-        const thali = document.getElementById('thali');
-        const items = document.querySelectorAll('.food-item');
+        const cards = document.querySelectorAll('.ingredient-card');
         const overlay = document.getElementById('overlay');
-        const card = document.getElementById('detailCard');
+        const detailCard = document.getElementById('detailCard');
         const closeBtn = document.getElementById('closeBtn');
 
-        // Content Fields
+        // UI Elements
         const ui = {
             title: document.getElementById('mTitle'),
+            image: document.getElementById('mImage'),
             soul: document.getElementById('mSoul'),
             fuel: document.getElementById('mFuel'),
             cal: document.getElementById('sCal'),
@@ -509,12 +433,14 @@
             fat: document.getElementById('sFat')
         };
 
-        // Functions
+        // Open Modal
         function openDetail(id) {
             const data = vibeData[id];
-            if(!data) return;
+            if (!data) return;
 
             ui.title.innerText = data.title;
+            ui.image.src = data.image;
+            ui.image.alt = data.title;
             ui.soul.innerText = data.soul;
             ui.fuel.innerText = data.fuel;
             ui.cal.innerText = data.stats.cal;
@@ -522,33 +448,25 @@
             ui.fat.innerText = data.stats.fat;
 
             overlay.classList.add('open');
-            card.classList.add('open');
-            thali.classList.add('active-item');
-
-            items.forEach(i => i.classList.remove('active'));
-            document.querySelector(`.food-item[data-id="${id}"]`).classList.add('active');
+            detailCard.classList.add('open');
         }
 
+        // Close Modal
         function closeDetail() {
             overlay.classList.remove('open');
-            card.classList.remove('open');
-            thali.classList.remove('active-item');
-            items.forEach(i => i.classList.remove('active'));
+            detailCard.classList.remove('open');
         }
 
         // Event Listeners
-        items.forEach(item => {
-            item.addEventListener('click', () => openDetail(item.getAttribute('data-id')));
-            item.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') openDetail(item.getAttribute('data-id'));
-            });
+        cards.forEach(card => {
+            card.addEventListener('click', () => openDetail(card.getAttribute('data-id')));
         });
 
         closeBtn.addEventListener('click', closeDetail);
         overlay.addEventListener('click', closeDetail);
 
         document.addEventListener('keydown', (e) => {
-            if(e.key === "Escape") closeDetail();
+            if (e.key === "Escape") closeDetail();
         });
     </script>
 </body>

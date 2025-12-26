@@ -1,0 +1,339 @@
+/* DishShowcase Component Styles */
+/* Reusable template for menu item showcases */
+
+/* ===== CSS Variables (Customizable Theme) ===== */
+.dish-showcase-container {
+  --primary: #8B0000;
+  --gold: #D4AF37;
+  --dark: #1a1a1a;
+  --light: #f9f5eb;
+  --white: #ffffff;
+}
+
+/* ===== Base Styles ===== */
+.dish-showcase-container {
+  font-family: 'Lora', serif;
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.dish-showcase-container h1,
+.dish-showcase-container h2,
+.dish-showcase-container h3 {
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== Hero Header ===== */
+.dish-showcase-container .hero-header {
+  text-align: center;
+  padding: 80px 20px 40px;
+  background: linear-gradient(to bottom, #fff, var(--light));
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.dish-showcase-container .hero-header h1 {
+  font-size: 3rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.dish-showcase-container .hero-header .subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* ===== Heritage/History Section ===== */
+.dish-showcase-container .history-box {
+  max-width: 800px;
+  margin: 60px auto;
+  text-align: center;
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid var(--gold);
+}
+
+.dish-showcase-container .history-box h2 {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.dish-showcase-container .history-box p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* ===== Main Thali/Dish Showcase ===== */
+.dish-showcase-container .thali-showcase {
+  background: url('https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg?auto=compress&cs=tinysrgb&w=1260') center/cover;
+  padding: 60px 20px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin: 0 20px 60px;
+  border: 3px solid rgba(212, 175, 55, 0.5);
+  position: relative;
+}
+
+.dish-showcase-container .thali-showcase h2 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.dish-showcase-container .thali-showcase > p {
+  color: #f0f0f0;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.dish-showcase-container .main-thali-image {
+  max-width: 100%;
+  width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transition: transform 0.5s ease;
+}
+
+.dish-showcase-container .main-thali-image:hover {
+  transform: scale(1.02);
+}
+
+/* ===== Ingredients/Dishes Grid ===== */
+.dish-showcase-container .ingredients-section {
+  max-width: 1100px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+.dish-showcase-container .ingredients-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  color: var(--dark);
+}
+
+.dish-showcase-container .grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.dish-showcase-container .ingredient-card {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid var(--gold);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dish-showcase-container .ingredient-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border-left-color: var(--primary);
+}
+
+.dish-showcase-container .card-icon {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.dish-showcase-container .ingredient-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+.dish-showcase-container .ingredient-card p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.dish-showcase-container .tap-hint {
+  font-size: 0.8rem;
+  color: var(--gold);
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* ===== Modal Overlay ===== */
+.dish-showcase-container .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  backdrop-filter: blur(5px);
+}
+
+.dish-showcase-container .modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ===== Detail Card Modal ===== */
+.dish-showcase-container .detail-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(20px);
+  width: 90%;
+  max-width: 500px;
+  background: #fff;
+  border-radius: 12px;
+  z-index: 1001;
+  opacity: 0;
+  transition: all 0.4s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-top: 5px solid var(--primary);
+  pointer-events: none;
+}
+
+.dish-showcase-container .detail-card.open {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+  pointer-events: all;
+}
+
+.dish-showcase-container .card-header {
+  padding: 20px 25px 15px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dish-showcase-container .card-header h2 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 0;
+}
+
+.dish-showcase-container .close-icon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #999;
+  transition: 0.3s;
+  background: none;
+  border: none;
+}
+
+.dish-showcase-container .close-icon:hover {
+  color: var(--primary);
+}
+
+.dish-showcase-container .card-body {
+  padding: 0 25px 25px;
+}
+
+/* ===== Modal Food Image ===== */
+.dish-showcase-container .modal-food-image {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Data Blocks ===== */
+.dish-showcase-container .data-block {
+  margin-bottom: 20px;
+}
+
+.dish-showcase-container .data-label {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  color: var(--gold);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.dish-showcase-container .data-text {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* ===== Vital Stats ===== */
+.dish-showcase-container .vital-stats {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.dish-showcase-container .stat-box strong {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.dish-showcase-container .stat-box span {
+  font-size: 0.75rem;
+  color: #999;
+  text-transform: uppercase;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .dish-showcase-container .hero-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .dish-showcase-container .main-thali-image {
+    width: 90%;
+  }
+
+  .dish-showcase-container .ingredient-card {
+    padding: 20px;
+  }
+
+  .dish-showcase-container .history-box {
+    margin: 40px 20px;
+    padding: 30px 20px;
+  }
+
+  .dish-showcase-container .modal-food-image {
+    max-width: 200px;
+  }
+}
